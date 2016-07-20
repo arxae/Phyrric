@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phyrric", "Phyrric\Phyrric.csproj", "{78E78751-D042-4C32-8615-EE25DE773FC0}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Game Data", "Game Data\Game Data.shproj", "{3889CC0A-E169-4CF4-B888-47E86239AFA6}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "RogueSharp", "RogueSharp\RogueSharp.shproj", "{51BDA571-26B5-45B2-A55C-8D520462058B}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Game Data\Game Data.projitems*{3889cc0a-e169-4cf4-b888-47e86239afa6}*SharedItemsImports = 13
+		RogueSharp\RogueSharp.projitems*{51bda571-26b5-45b2-a55c-8d520462058b}*SharedItemsImports = 13
+		Game Data\Game Data.projitems*{78e78751-d042-4c32-8615-ee25de773fc0}*SharedItemsImports = 4
+		RogueSharp\RogueSharp.projitems*{78e78751-d042-4c32-8615-ee25de773fc0}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78E78751-D042-4C32-8615-EE25DE773FC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78E78751-D042-4C32-8615-EE25DE773FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78E78751-D042-4C32-8615-EE25DE773FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78E78751-D042-4C32-8615-EE25DE773FC0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

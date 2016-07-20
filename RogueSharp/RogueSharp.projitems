@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>51bda571-26b5-45b2-a55c-8d520462058b</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>RogueSharp</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Algorithms\DepthFirstPaths.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Algorithms\DijkstraShortestPath.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Algorithms\DirectedEdge.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Algorithms\EdgeWeightedDigraph.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Algorithms\Graph.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Algorithms\IndexMinPriorityQueue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Algorithms\UnionFind.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiceNotation\Dice.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiceNotation\DiceExpression.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiceNotation\DiceParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiceNotation\DiceResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiceNotation\Exceptions\ImpossibleDieException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiceNotation\Exceptions\InvalidChooseException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiceNotation\Exceptions\InvalidMultiplicityException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiceNotation\IDiceParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiceNotation\TermResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiceNotation\Terms\ConstantTerm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiceNotation\Terms\DiceTerm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiceNotation\Terms\IDiceExpressionTerm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FieldOfView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GlobalSuppressions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GoalMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ICell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IGoalMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Map.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MapCreation\BorderOnlyMapCreationStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MapCreation\CaveMapCreationStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MapCreation\IMapCreationStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MapCreation\RandomRoomsMapCreationStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MapCreation\StringDeserializeMapCreationStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Path.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PathFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Random\DotNetRandom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Random\GaussianRandom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Random\IRandom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Random\KnownSeriesRandom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Random\MaxRandom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Random\MinRandom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Random\Singleton.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)DiceNotation\Readme.md" />
+  </ItemGroup>
+</Project>
