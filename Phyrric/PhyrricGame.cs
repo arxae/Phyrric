@@ -44,6 +44,12 @@ namespace Phyrric
 			Components.Add(engineComponent);
 		}
 
+		public static void ProcessTurn()
+		{
+			CurrentMap.MapEntities.ForEach(ent => ent.Update());
+			CurrentMap.MapObjects.ForEach(obj => obj.Update());
+		}
+
 		public static void NextMap()
 		{
 			CurrentMap = PhyrricMap.Create(

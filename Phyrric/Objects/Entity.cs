@@ -45,9 +45,9 @@ namespace Phyrric.Objects
 			{
 				// TODO: Interaction and such, 
 				// allow move through entity for now
-				//isNewPosValid = false;
-				//var entity = PhyrricGame.CurrentMap.GetEntity(newPos.X, newPos.Y);
-				//entity.Interact(Entity);
+				isNewPosValid = false;
+				var entity = PhyrricGame.CurrentMap.GetEntity(newPos.X, newPos.Y);
+				Interact(entity);
 			}
 
 			if (isNewPosValid)
@@ -56,25 +56,24 @@ namespace Phyrric.Objects
 			}
 		}
 
-		public void Move(int x, int y)
-		{
-			Move(new Point(x, y));
-		}
-
-		public void Move(Enums.Direction dir)
+		/// <summary>
+		/// Move the player
+		/// </summary>
+		/// <param name="dir"></param>
+		/// <returns>True if a move was attempted</returns>
+		public bool Move(Enums.Direction dir)
 		{
 			switch (dir)
 			{
-				case Enums.Direction.Up: Move(0, -1); break;
-				case Enums.Direction.Right: Move(1, 0); break;
-				case Enums.Direction.Down: Move(0, 1); break;
-				case Enums.Direction.Left: Move(-1, 0); break;
+				case Enums.Direction.Up: Move(new Point(0, -1)); return true;
+				case Enums.Direction.Right: Move(new Point(1, 0)); return true;
+				case Enums.Direction.Down: Move(new Point(0, 1)); return true;
+				case Enums.Direction.Left: Move(new Point(-1, 0)); return true;
 			}
+
+			return false;
 		}
 
-		public virtual void Interact(Entity other)
-		{
-			System.Console.WriteLine($"Ohai {other.GetType()}");
-		}
+		public virtual void Interact(Entity other) { }
 	}
 }

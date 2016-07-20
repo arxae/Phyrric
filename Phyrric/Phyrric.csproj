@@ -94,6 +94,7 @@
     <Compile Include="MapCreation\MinSpanningTreeCreationStrategy.cs" />
     <Compile Include="MapCreation\TestMapCreationStrategy.cs" />
     <Compile Include="Objects\Entity.cs" />
+    <Compile Include="Objects\Monster.cs" />
     <Compile Include="Objects\Player.cs" />
     <Compile Include="Objects\Sign.cs" />
     <Compile Include="Objects\Stairs.cs" />

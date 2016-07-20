@@ -52,9 +52,11 @@ namespace Phyrric
 		public void PopulateAll()
 		{
 			PhyrricGame.Player = new Player(PhyrricGame.CurrentMap.GetRandomSpot());
+
 			_placeStairs();
 			_populateTerminals();
 			_populateSigns();
+			_populateMonsters();
 		}
 
 		void _placeStairs()
@@ -116,6 +118,37 @@ namespace Phyrric
 
 				MapObjects.Add(new Sign(loc, cstring));
 			}
+		}
+
+		void _populateMonsters()
+		{
+			int monstersToSpawn = PhyrricGame.Rng.Next(1, RoomCenters.Count);
+			var monsterPositions = new List<Point>();
+
+			for (int m = 0; m < monstersToSpawn; m++)
+			{
+				bool emptySpace = false;
+				int attemptCounter = 0;
+
+				do
+				{
+					var pos = this.GetRandomSpot();
+
+					if (CellContainsEntity(pos) == false && CellContainsObject(pos) == false)
+					{
+						monsterPositions.Add(pos);
+						emptySpace = true;
+					}
+
+					attemptCounter++;
+				} while (emptySpace == false || attemptCounter == 100);
+			}
+
+			monsterPositions.ForEach(pos =>
+			{
+				var monster = new Monster(pos);
+				MapEntities.Add(monster);
+			});
 		}
 
 		// Utility methods
