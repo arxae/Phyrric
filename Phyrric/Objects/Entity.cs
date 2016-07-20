@@ -9,6 +9,7 @@ namespace Phyrric.Objects
 
 		public Entity(char icon, Point position) : this(icon, position, Color.White, Color.TransparentBlack) { }
 		public Entity(char icon, Point position, Color fg, Color bg)
+			: base(SadConsole.Engine.DefaultFont)
 		{
 			Animation = new AnimatedTextSurface("default", 1, 1, SadConsole.Engine.DefaultFont);
 

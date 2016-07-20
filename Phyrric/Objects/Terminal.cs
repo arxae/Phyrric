@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+
+using Microsoft.Xna.Framework;
 using SadConsole.Consoles;
 using SadConsole.Controls;
 
@@ -121,7 +123,7 @@ namespace Phyrric.Objects
 				else
 				{
 					PhyrricGame.GameScreen.Messages
-						.PrintMessage("Wrong password!");
+						.PrintMessage("Wrong password!".CreateColored(Color.White, Color.Black, null));
 				}
 			}
 		}

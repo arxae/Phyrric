@@ -17,12 +17,6 @@ namespace Phyrric.Panels
             _editor.ShiftRight(1);
         }
 
-        public void PrintMessage(string msg)
-        {
-            _editor.ShiftDown(1);
-            VirtualCursor.Print(msg).CarriageReturn();
-        }
-
         public void PrintMessage(ColoredString msg)
         {
             _editor.ShiftDown(1);

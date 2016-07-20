@@ -20,6 +20,7 @@ namespace Phyrric
 		public List<Entity> MapObjects { get; set; }
 		public List<Rectangle> RoomCenters { get; set; }
 		public List<string> Passwords { get; set; }
+		public List<string> KnownPasswords { get; set; }
 
 		public PhyrricMap() : this(1, 1) { }
 		public PhyrricMap(int width, int height)
@@ -29,6 +30,7 @@ namespace Phyrric
 			MapObjects = new List<Entity>();
 			RoomCenters = new List<Rectangle>();
 			Passwords = new List<string>();
+			KnownPasswords = new List<string>();
 		}
 
 		public void Update()
