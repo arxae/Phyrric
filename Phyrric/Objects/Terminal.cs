@@ -31,7 +31,6 @@ namespace Phyrric.Objects
 
 		public class TerminalConsole : Window
 		{
-			SurfaceEditor _editor;
 			InputBox _pwinput;
 			string _password;
 
@@ -43,16 +42,15 @@ namespace Phyrric.Objects
 				AssignedTerminal = _terminal;
 
 				_password = password;
-				_editor = new SurfaceEditor(TextSurface);
 
 				// Border
 				var border = Util.GetPanelBorder(Width, Height);
-				border.Draw(_editor);
+				border.Draw(this);
 
 				// Title
 				string title = "Password Entry";
 				int title_x_pos = (Width / 2) - (title.Length / 2);
-				_editor.Print(title_x_pos, 0, title);
+				Print(title_x_pos, 0, title);
 
 				// Controls
 				// Input
