@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+
+using Microsoft.Xna.Framework;
 using SadConsole.Shapes;
 
 namespace Phyrric
@@ -36,6 +38,32 @@ namespace Phyrric
 			}
 
 			return new string(stringChars);
+		}
+
+		/// <summary>
+		/// Returns yes or no chance% of the time
+		/// </summary>
+		/// <param name="chance"></param>
+		/// <returns></returns>
+		public static bool RandomChoice(int chance = 50)
+		{
+			return PhyrricGame.Rng.Next(100) > chance;
+		}
+
+		static List<string> _messages;
+		public static string GetRandomMessage()
+		{
+			if (_messages == null)
+			{
+				_messages = new List<string>()
+				{
+					"What does [password] mean?",
+					"Well hello there",
+					"Look behind you!"
+				};
+			}
+
+			return _messages.RandomElement();
 		}
 	}
 }

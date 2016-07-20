@@ -12,9 +12,14 @@ namespace Phyrric
 {
 	public class PhyrricMap : Map, IMap
 	{
+		int maxTerminals = 2;
+		int minTerminalPlayerDistance = 10;
+		int maxSigns = 5;
+
 		public List<Entity> MapEntities { get; set; }
 		public List<Entity> MapObjects { get; set; }
 		public List<Rectangle> RoomCenters { get; set; }
+		public List<string> Passwords { get; set; }
 
 		public PhyrricMap() : this(1, 1) { }
 		public PhyrricMap(int width, int height)
@@ -23,6 +28,7 @@ namespace Phyrric
 			MapEntities = new List<Entity>();
 			MapObjects = new List<Entity>();
 			RoomCenters = new List<Rectangle>();
+			Passwords = new List<string>();
 		}
 
 		public void Update()
@@ -48,6 +54,7 @@ namespace Phyrric
 			PhyrricGame.Player = new Player(PhyrricGame.CurrentMap.GetRandomSpot());
 			_placeStairs();
 			_populateTerminals();
+			_populateSigns();
 		}
 
 		void _placeStairs()
@@ -61,10 +68,8 @@ namespace Phyrric
 
 		void _populateTerminals()
 		{
-			int maxTerminals = 2;
-			int minTerminalPlayerDistance = 10;
-
 			var terminals = new List<Terminal>();
+
 			foreach (var room in RoomCenters)
 			{
 				if (terminals.Count >= maxTerminals) break;
@@ -73,7 +78,9 @@ namespace Phyrric
 				{
 					if (CellContainsObject(room.Center) == false)
 					{
-						terminals.Add(new Terminal(room.Center, Util.GeneratePassword(4)));
+						var password = Util.GeneratePassword(4);
+						terminals.Add(new Terminal(room.Center, password));
+						Passwords.Add(password);
 					}
 				}
 			}
@@ -81,11 +88,34 @@ namespace Phyrric
 			// Checks failed, just plop down a terminal down somewhere, i don't care
 			if (terminals.Count == 0)
 			{
+				var password = Util.GeneratePassword(4);
 				var pos = RoomCenters[PhyrricGame.Rng.Next(RoomCenters.Count)];
-				terminals.Add(new Terminal(pos.Center, Util.GeneratePassword(4)));
+				terminals.Add(new Terminal(pos.Center, password));
+				Passwords.Add(password);
 			}
 
 			MapObjects.AddRange(terminals);
+		}
+
+		void _populateSigns()
+		{
+			var signsToGenerate = PhyrricGame.Rng.Next(1, maxSigns);
+
+			for (int s = 0; s < signsToGenerate; s++)
+			{
+				var room = RoomCenters.RandomElement();
+
+				Point loc = new Point(
+					Util.RandomChoice() ? room.Left + 1 : room.Right - 1,
+					Util.RandomChoice() ? room.Top + 1 : room.Bottom - 1);
+
+				var msg = Util.GetRandomMessage()
+					.Replace("[password]", Passwords.RandomElement());
+
+				var cstring = msg.CreateColored(Color.White, null);
+
+				MapObjects.Add(new Sign(loc, cstring));
+			}
 		}
 
 		// Utility methods

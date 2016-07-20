@@ -59,5 +59,18 @@ namespace Phyrric
 
 			return (int)Math.Sqrt((x * x) + (y * y));
 		}
+
+		public static T RandomElement<T>(this List<T> lst)
+		{
+			return lst[PhyrricGame.Rng.Next(lst.Count)];
+		}
+
+		public static List<T> RandomElements<T>(this List<T> lst, int count)
+		{
+			return lst
+				.OrderBy(e => PhyrricGame.Rng.Next(int.MaxValue))
+				.Take(count)
+				.ToList();
+		}
 	}
 }

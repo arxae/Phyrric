@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 using SadConsole;
 using SadConsole.Consoles;
@@ -83,6 +84,7 @@ namespace Phyrric
 			// Debugkeys
 			if (Settings.Debug)
 			{
+				// Explore all
 				if (info.KeysPressed.Contains(AsciiKey.Get(Microsoft.Xna.Framework.Input.Keys.F1)))
 				{
 					PhyrricGame.CurrentMap.GetAllCells().ForEach(cell =>
@@ -91,9 +93,28 @@ namespace Phyrric
 					});
 				}
 
+				// Show objects out of fov
 				if (info.KeysPressed.Contains(AsciiKey.Get(Microsoft.Xna.Framework.Input.Keys.F2)))
 				{
 					Settings.Debug_DisplayObjectsOutOfFOV = !Settings.Debug_DisplayObjectsOutOfFOV;
+				}
+
+				// Unlock everything
+				if (info.KeysPressed.Contains(AsciiKey.Get(Microsoft.Xna.Framework.Input.Keys.F3)))
+				{
+					var terminals = PhyrricGame.CurrentMap.MapObjects
+						.Where(obj => obj.GetType() == typeof(Objects.Terminal));
+					terminals.ForEach(term => ((Objects.Terminal)term).Unlock());
+				}
+
+				// Move player to exit
+				if (info.KeysPressed.Contains(AsciiKey.Get(Microsoft.Xna.Framework.Input.Keys.F4)))
+				{
+					var stairs = PhyrricGame.CurrentMap.MapObjects
+						.First(o => o.GetType() == typeof(Objects.Stairs))
+						.Position;
+
+					PhyrricGame.Player.Position = stairs;
 				}
 			}
 
