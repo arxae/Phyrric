@@ -7,19 +7,17 @@ namespace Phyrric.Panels
 {
 	public class MapPanel : Console
 	{
-		SurfaceEditor _editor;
 
 		public MapPanel()
 			: base(Constants.MAPPANEL_WIDTH, Constants.MAPPANEL_HEIGHT)
 		{
 			Position = new Point(Constants.MAPPANEL_X, Constants.MAPPANEL_Y);
-			_editor = new SurfaceEditor(TextSurface);
 		}
 
 		public override void Render()
 		{
 			base.Render();
-			_editor.Clear();
+			Clear();
 
 			_renderMap();
 		}
@@ -37,26 +35,26 @@ namespace Phyrric.Panels
 
 					if (cell.IsWalkable)
 					{
-						_editor.SetGlyph(cell.X, cell.Y, 219);
-						_editor.SetForeground(cell.X, cell.Y, Colors.Tile_InFov_Floor);
+						SetGlyph(cell.X, cell.Y, 219);
+						SetForeground(cell.X, cell.Y, Colors.Tile_InFov_Floor);
 					}
 					else
 					{
-						_editor.SetGlyph(cell.X, cell.Y, 219);
-						_editor.SetForeground(cell.X, cell.Y, Colors.Tile_InFov_Wall);
+						SetGlyph(cell.X, cell.Y, 219);
+						SetForeground(cell.X, cell.Y, Colors.Tile_InFov_Wall);
 					}
 				}
 				else if (cell.IsExplored)
 				{
 					if (cell.IsWalkable)
 					{
-						_editor.SetGlyph(cell.X, cell.Y, 219);
-						_editor.SetForeground(cell.X, cell.Y, Colors.Tile_Floor);
+						SetGlyph(cell.X, cell.Y, 219);
+						SetForeground(cell.X, cell.Y, Colors.Tile_Floor);
 					}
 					else
 					{
-						_editor.SetGlyph(cell.X, cell.Y, 219);
-						_editor.SetForeground(cell.X, cell.Y, Colors.Tile_Wall);
+						SetGlyph(cell.X, cell.Y, 219);
+						SetForeground(cell.X, cell.Y, Colors.Tile_Wall);
 					}
 				}
 			});
