@@ -34,7 +34,7 @@ namespace Phyrric
 
 			for (int i = 0; i < stringChars.Length; i++)
 			{
-				stringChars[i] = chars[PhyrricGame.Rng.Next(chars.Length)];
+				stringChars[i] = chars[PhyrricGame.Rng.Next(chars.Length - 1)];
 			}
 
 			return new string(stringChars);

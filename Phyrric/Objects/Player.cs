@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using SadConsole.Input;
 
@@ -29,7 +31,23 @@ namespace Phyrric.Objects
 
 		public override void Interact(Entity other)
 		{
+			if (other.GetType() == typeof(Monster))
+			{
+				// Remove the monster for now (combat system will come later)
+				PhyrricGame.CurrentMap.MapEntities.Remove(other);
 
+				// Display a message (guaranteed password for now)
+				var pw = PhyrricGame.CurrentMap.Passwords.RandomElement();
+
+				if (PhyrricGame.CurrentMap.KnownPasswords.Contains(pw) == false)
+				{
+					PhyrricGame.CurrentMap.KnownPasswords.Add(pw);
+				}
+
+				var msg = $"xxxxxxxxxxxxxxxxxxxx You found password: {pw}".CreateColored(Color.White, Color.Black, null);
+
+				PhyrricGame.GameScreen.Messages.PrintMessage(msg);
+			}
 		}
 	}
 }

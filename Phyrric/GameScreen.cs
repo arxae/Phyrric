@@ -54,8 +54,7 @@ namespace Phyrric
 			_surfaceEd.Print(2, 0, "Messages");
 
 			// Say Hi!
-			ColoredString cstring = "Welcome to Phyrric".CreateGradient(Color.Orange, Color.OrangeRed, null);
-			Messages.PrintMessage(cstring);
+			Messages.PrintGradientMessage("Welcome to Phyrric", Color.Orange, Color.OrangeRed);
 		}
 
 		public void Activate()
