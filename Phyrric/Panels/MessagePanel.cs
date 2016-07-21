@@ -40,7 +40,7 @@ namespace Phyrric.Panels
 			foreach (var line in lines)
 			{
 				ShiftDown(1);
-				var gline = msg.CreateGradient(startColor, endColor, null);
+				var gline = line.CreateGradient(startColor, endColor, null);
 				VirtualCursor.Print(gline).CarriageReturn();
 			}
 		}

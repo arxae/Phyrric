@@ -23,6 +23,17 @@ namespace Phyrric.Objects
 			if (info.KeysPressed.Contains(AsciiKey.Get(Keys.Left))) { hasMoved = Move(Enums.Direction.Left); }
 			if (info.KeysPressed.Contains(AsciiKey.Get(Keys.Right))) { hasMoved = Move(Enums.Direction.Right); }
 
+			if (info.KeysReleased.Contains(AsciiKey.Get(Keys.Space)))
+			{
+				var player = PhyrricGame.Player;
+
+				if (PhyrricGame.CurrentMap.CellContainsObject(player.Position))
+				{
+					var ent = PhyrricGame.CurrentMap.GetMapObject(player.Position);
+					ent.Interact(player);
+				}
+			}
+
 			if (hasMoved)
 			{
 				PhyrricGame.ProcessTurn();
@@ -44,9 +55,8 @@ namespace Phyrric.Objects
 					PhyrricGame.CurrentMap.KnownPasswords.Add(pw);
 				}
 
-				var msg = $"xxxxxxxxxxxxxxxxxxxx You found password: {pw}".CreateColored(Color.White, Color.Black, null);
-
-				PhyrricGame.GameScreen.Messages.PrintMessage(msg);
+				var msg = $"You found password: {pw}";
+				PhyrricGame.GameScreen.Messages.PrintGradientMessage(msg, Color.White, Color.LightBlue);
 			}
 		}
 	}

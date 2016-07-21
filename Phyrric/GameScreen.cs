@@ -117,17 +117,6 @@ namespace Phyrric
 				}
 			}
 
-			if (info.KeysReleased.Contains(AsciiKey.Get(Microsoft.Xna.Framework.Input.Keys.Space)))
-			{
-				var player = PhyrricGame.Player;
-
-				if (PhyrricGame.CurrentMap.CellContainsObject(player.Position))
-				{
-					var ent = PhyrricGame.CurrentMap.GetMapObject(player.Position);
-					ent.Interact(player);
-				}
-			}
-
 			return true;
 		}
 	}
