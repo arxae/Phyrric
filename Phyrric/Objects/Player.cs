@@ -34,6 +34,28 @@ namespace Phyrric.Objects
 				}
 			}
 
+
+			var ctrl = info.KeysDown.Contains(AsciiKey.Get(Keys.LeftControl))
+				|| info.KeysDown.Contains(AsciiKey.Get(Keys.RightControl));
+			var p = info.KeysPressed.Contains(AsciiKey.Get(Keys.P));
+
+			if (ctrl && p)
+			{
+				SadConsole.ColoredString cstring;
+				if (PhyrricGame.CurrentMap.KnownPasswords.Count == 0)
+				{
+					cstring = "I don't know any passwords".CreateColored(Color.White, Color.Black);
+				}
+				else
+				{
+					var pw = string.Join(", ", PhyrricGame.CurrentMap.KnownPasswords);
+					cstring = $"I know: {pw}".CreateColored(Color.White, Color.Black);
+				}
+
+				PhyrricGame.GameScreen.Messages.PrintMessage(cstring);
+			}
+
+
 			if (hasMoved)
 			{
 				PhyrricGame.ProcessTurn();
