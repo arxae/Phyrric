@@ -66,19 +66,8 @@ namespace Phyrric.Objects
 		{
 			if (other.GetType() == typeof(Monster))
 			{
-				// Remove the monster for now (combat system will come later)
-				PhyrricGame.CurrentMap.MapEntities.Remove(other);
-
-				// Display a message (guaranteed password for now)
-				var pw = PhyrricGame.CurrentMap.Passwords.RandomElement();
-
-				if (PhyrricGame.CurrentMap.KnownPasswords.Contains(pw) == false)
-				{
-					PhyrricGame.CurrentMap.KnownPasswords.Add(pw);
-				}
-
-				var msg = $"You found password: {pw}";
-				PhyrricGame.GameScreen.Messages.PrintGradientMessage(msg, Color.White, Color.LightBlue);
+				var combat = new Combat.CombatScreen(this, other);
+				combat.Activate();
 			}
 		}
 	}
