@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Phyrric.Data;
+
+using Microsoft.Xna.Framework;
 using SadConsole.Consoles;
 
 namespace Phyrric.Objects
@@ -6,6 +8,9 @@ namespace Phyrric.Objects
 	public class Entity : SadConsole.Game.GameObject
 	{
 		public bool IsInPlayerFov { get; set; }
+
+		// Stats (might split off later)
+		public AbilityScoreSet AbilityScores { get; set; }
 
 		public Entity(char icon, Point position) : this(icon, position, Color.White, Color.TransparentBlack) { }
 		public Entity(char icon, Point position, Color fg, Color bg)
@@ -19,6 +24,7 @@ namespace Phyrric.Objects
 			frame[0].Background = bg;
 
 			Position = position;
+			AbilityScores = AbilityScoreSet.GetRandomSet();
 		}
 
 		public void SetForegroundColor(Color col)

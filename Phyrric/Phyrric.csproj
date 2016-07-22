@@ -83,6 +83,8 @@
     <Compile Include="Colors.cs" />
     <Compile Include="Combat\CombatScreen.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Data\AbilityScore.cs" />
+    <Compile Include="Data\AbilityScoreSet.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="GameScreen.cs" />
     <Compile Include="Enums.cs" />

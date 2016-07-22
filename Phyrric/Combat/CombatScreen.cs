@@ -17,8 +17,8 @@ namespace Phyrric.Combat
 			B = entryB;
 
 			// Declare buttons
-			var attack_button = new Button(15, 1) { Text = "Attack", Position = new Point(1, 1) };
-			var flee_button = new Button(15, 1) { Text = "Flee", Position = new Point(1, 2) };
+			var attack_button = new Button(15, 1) { Text = "Attack", Position = new Point(1, Height - 2) };
+			var flee_button = new Button(15, 1) { Text = "Flee", Position = new Point(17, Height - 2) };
 
 			// Button actions
 			attack_button.ButtonClicked += (s, e) => _debugResolveCombat();
@@ -27,6 +27,8 @@ namespace Phyrric.Combat
 			// Add buttons
 			Add(attack_button);
 			Add(flee_button);
+
+			_debugPrintStats();
 		}
 
 		void _debugResolveCombat()
@@ -43,6 +45,28 @@ namespace Phyrric.Combat
 			}
 
 			PhyrricGame.GameScreen.Activate();
+		}
+
+		void _debugPrintStats()
+		{
+			int a_column = 1;
+			int b_column = 25;
+
+			_printStat(A, a_column, "Entity A");
+			_printStat(B, b_column, "Entity B");
+		}
+
+		void _printStat(Entity ent, int startingColumn, string name)
+		{
+			int x = startingColumn;
+
+			Print(x, 1, $"{name}: {ent.GetType().Name}");
+			x++;
+			Print(x, 2, $"Average score: {ent.AbilityScores.AverageScore}");
+			Print(x, 3, $"STR: {ent.AbilityScores.Strength.Value}");
+			Print(x, 4, $"DEX: {ent.AbilityScores.Dexterity.Value}");
+			Print(x, 5, $"CON: {ent.AbilityScores.Constitution.Value}");
+			Print(x, 6, $"INT: {ent.AbilityScores.Intelligence.Value}");
 		}
 
 		public void Activate()
